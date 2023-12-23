@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# online-shop-front-end
+Internship 2023 - Online shop front end (React, Redux Toolkit, Material UI)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This is the front end for the full-stack project Online Shop.
 
-## Available Scripts
+Link to the repository for the back end: https://github.com/christina172/online-shop-back-end.
 
-In the project directory, you can run:
+## Running the app
 
-### `npm start`
+Refer to the repository for the back end.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project structure
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Add project structure desciption
 
-### `npm test`
+## Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Add description
 
-### `npm run build`
+## Issues
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+One of the issues is that after refresh token expires, when on a products or a product page, the user will be redirected to the login screen (e.g. in case of a page refresh), because the access token is still present in the local storage, but dispatching the action to get the user's cart will cause an unauthorized error, because the refresh token is not valid. To fix this, rework the code to not dispatch "getUserCart" action on these pages, check if an order item with a particular product id already exists in the cart on the back end.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Rework
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Check not to return sensitive information in errors
+- Handle pending states and errors
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
