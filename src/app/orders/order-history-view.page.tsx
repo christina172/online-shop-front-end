@@ -41,7 +41,7 @@ const OrderHistoryPageView = () => {
       <Typography gutterBottom variant='h4' component='h1'>Order History</Typography>
       {pending.orders 
         ?<Loading/>
-        :orders.length !== 0
+        :(orders && orders.length !== 0)
           ?<Stack sx={{width: small? '100%' : '80%', mx: 'auto'}} spacing={2}>
             {orders.map(order=>(
               <Accordion key={order.id} elevation={3}>

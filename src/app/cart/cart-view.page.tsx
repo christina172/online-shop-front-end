@@ -80,7 +80,7 @@ const CartPageView = () => {
       <Typography gutterBottom variant='h4' component='h1'>Cart</Typography>
       {pending.cart 
         ?<Loading/>
-        :cart.length !== 0
+        :(cart && cart.length !== 0)
           ?(<Stack sx={{width: small? '100%' : '80%', mx: 'auto'}} spacing={2}>
             {cart.map(item=>(
               <Paper 

@@ -98,7 +98,7 @@ const ProductsPageView = () => {
       <Grid container spacing={3}>
       {pending.products 
         ?<Loading/>
-        :products.length !== 0
+        :(products && products.length !== 0)
           ? (products.map(product=>(
           <Grid 
             item 
