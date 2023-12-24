@@ -42,7 +42,7 @@ const ProductsPageView = () => {
   const [heading, setHeading] = useState('Products');
 
   useEffect(()=>{
-    if (localStorage.getItem("os_access_token")) {
+    if (localStorage.getItem("os_access_token") && !cartId) {
       dispatch(getUserCart());
     }
   }, [dispatch])
@@ -98,7 +98,7 @@ const ProductsPageView = () => {
       <Grid container spacing={3}>
       {pending.products 
         ?<Loading/>
-        :(products && products.length !== 0)
+        :(products.length !== 0)
           ? (products.map(product=>(
           <Grid 
             item 

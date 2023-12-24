@@ -42,7 +42,7 @@ const ProductPageView = () => {
   const {cart, cartId} = useCartSelector();
 
   useEffect(()=>{
-    if (localStorage.getItem('os_access_token')) {
+    if (localStorage.getItem('os_access_token') && !cartId) {
       dispatch(getUserCart());
     }
   }, [dispatch]);

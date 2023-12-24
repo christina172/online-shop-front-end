@@ -33,7 +33,9 @@ const OrderHistoryPageView = () => {
   const {orders, pending, errors} = useOrdersSelector();
 
   useEffect(()=>{
-    dispatch(getUserOrders());
+    if (orders === null) {
+      dispatch(getUserOrders());
+    }
   }, [dispatch])
 
   return (

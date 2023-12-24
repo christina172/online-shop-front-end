@@ -7,7 +7,7 @@ import {OrdersState} from "../types/orders-state.type";
 import {getUserOrders} from "./orders.actions";
 
 const initialState: OrdersState = {
-  orders: [],
+  orders: null,
   pending: {
     orders: false,
   },

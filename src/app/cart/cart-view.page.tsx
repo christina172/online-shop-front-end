@@ -19,6 +19,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useAppDispatch } from "hooks";
 import { useCartSelector } from 'app/cart/store/cart.selectors';
 import { getUserCart, deleteCartItem, addProductQuantity, placeOrder } from 'app/cart/store/cart.actions';
+import { getUserOrders } from 'app/orders/store/orders.actions';
 
 // ============== Components ==============
 import Loading from 'components/loading.components';
@@ -36,7 +37,9 @@ const CartPageView = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(()=>{
-    dispatch(getUserCart());
+    if (!cartId) {
+      dispatch(getUserCart());
+    }
   }, [dispatch])
 
   useEffect(() => {
@@ -70,6 +73,7 @@ const CartPageView = () => {
     dispatch(placeOrder(id))
       .then(({ meta }) => {
         if (meta.requestStatus !== 'rejected') {
+          dispatch(getUserOrders());
           navigate('/user/order_history', { replace: true });
         }
       })
@@ -80,7 +84,7 @@ const CartPageView = () => {
       <Typography gutterBottom variant='h4' component='h1'>Cart</Typography>
       {pending.cart 
         ?<Loading/>
-        :(cart && cart.length !== 0)
+        :(cart.length !== 0)
           ?(<Stack sx={{width: small? '100%' : '80%', mx: 'auto'}} spacing={2}>
             {cart.map(item=>(
               <Paper 
